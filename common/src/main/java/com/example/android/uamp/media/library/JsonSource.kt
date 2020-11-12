@@ -34,6 +34,7 @@ import com.example.android.uamp.media.extensions.flag
 import com.example.android.uamp.media.extensions.genre
 import com.example.android.uamp.media.extensions.id
 import com.example.android.uamp.media.extensions.mediaUri
+import com.example.android.uamp.media.extensions.putCustomProperty
 import com.example.android.uamp.media.extensions.title
 import com.example.android.uamp.media.extensions.trackCount
 import com.example.android.uamp.media.extensions.trackNumber
@@ -160,6 +161,8 @@ fun MediaMetadataCompat.Builder.from(jsonMusic: JsonMusic): MediaMetadataCompat.
     // MediaMetadataCompat object. This is needed to send accurate metadata to the
     // media session during updates.
     downloadStatus = STATUS_NOT_DOWNLOADED
+
+    putCustomProperty("VALUE")
 
     // Allow it to be used in the typical builder style.
     return this

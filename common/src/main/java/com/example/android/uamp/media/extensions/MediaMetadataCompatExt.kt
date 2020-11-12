@@ -313,3 +313,9 @@ private fun MediaMetadataCompat.toCastMediaMetadata(): MediaMetadata {
  */
 const val METADATA_KEY_UAMP_FLAGS = "com.example.android.uamp.media.METADATA_KEY_UAMP_FLAGS"
 
+val CUSTOM_PROPERTY = "CUSTOM_PROPERTY"
+fun MediaMetadataCompat.Builder.putCustomProperty(value: String): MediaMetadataCompat.Builder =
+    putString(CUSTOM_PROPERTY, value)
+inline val MediaMetadataCompat.customProperty: String?
+    get() = this.getString(CUSTOM_PROPERTY)
+

@@ -34,6 +34,7 @@ import androidx.core.content.ContextCompat
 import androidx.media.MediaBrowserServiceCompat
 import androidx.media.MediaBrowserServiceCompat.BrowserRoot.EXTRA_RECENT
 import com.example.android.uamp.media.extensions.album
+import com.example.android.uamp.media.extensions.customProperty
 import com.example.android.uamp.media.extensions.flag
 import com.example.android.uamp.media.extensions.id
 import com.example.android.uamp.media.extensions.toMediaQueueItem
@@ -382,6 +383,9 @@ open class MusicService : MediaBrowserServiceCompat() {
         currentPlayer.playWhenReady = playWhenReady
         currentPlayer.stop(/* reset= */ true)
         if (currentPlayer == exoPlayer) {
+            metadataList.forEach {
+                Log.i("MediaMetadataCompat", "Custom property just before playback: ${it.customProperty}")
+            }
             val mediaSource = metadataList.toMediaSource(dataSourceFactory)
             exoPlayer.prepare(mediaSource)
             exoPlayer.seekTo(initialWindowIndex, playbackStartPositionMs)
